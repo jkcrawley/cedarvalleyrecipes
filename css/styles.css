@@ -1,0 +1,515 @@
+*{
+	box-sizing: border-box;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+/*color scheme
+primary: #D2b48c
+secondary: #ffd700
+Third: #996515;
+*/
+
+/* fonts used
+font-family: 'Abril Fatface', cursive;
+font-family: 'Poppins', sans-serif;
+*/
+
+body{
+    background-color: #996515;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+}
+
+
+/* Search bar */
+
+
+.search-box{
+    background-color:white;
+    margin: 0 auto;
+    height: 40px;
+    border-radius: 40px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+
+
+.search-txt{
+    border: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    font-size: 1rem;
+    transition: 0.4s;
+}
+
+.subbtn{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.subbtn:hover{
+    color: red;
+}
+
+/*heading sizes*/
+h1{
+    font-size: 2rem;
+}
+
+h2{
+    font-size: 1.5rem;
+}
+
+h3{
+    font-size: 1.25rem;
+}
+
+h4{
+    font-size: 1rem;
+}
+
+
+/*header and navigation*/
+.logo img{
+    max-width: 245px;
+    max-height: 92px;
+    height: auto;
+}
+
+.header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+}
+
+.navbar{
+    background: white;
+    text-align: center;
+}
+
+.navbar ul{
+    display: inline-flex;
+     list-style: none;
+     font-size: 1rem;
+}
+
+.navbar ul li{
+    width: 150px;
+    padding: 15px;
+    margin: 15px;
+}
+
+.navbar ul li a{
+    text-decoration: none;
+    color: #996515;
+}
+
+.navbar ul li a:hover{
+    color: #D2b48c;
+}
+
+.subnav{
+    display: none;
+}
+
+.navbar ul li:hover .subnav{
+    display: block;
+    position: absolute;
+    background: white;
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-left: -15px;
+}
+
+.navbar ul li:hover .subnav ul{
+    display: block;
+    margin: 10px;
+}
+
+.navbar ul li:hover .subnav ul li{
+    width: 150px;
+    padding: 10px;
+    border-bottom: 1px dotted #ddd;
+    background: transparent;
+    border-radius: 0;
+    text-align: left;
+    text-transform: capitalize;
+}
+
+.navbar ul li:hover .subnav ul li:last-child{
+    border: none;
+}
+
+.navbar ul li:hover .subnav ul li{
+
+}
+
+.toggle-button{
+    position: absolute;
+    top: 1.5rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+
+.toggle-button .bar{
+    height: 3px;
+    width: 100%;
+    background-color: black;
+    border-radius: 10px;
+}
+
+
+
+
+/*main container for content across website*/
+.main-container{
+    width: 100%;
+    margin: 0 auto;
+    background-color: #D2b48c;
+    margin-top: 77px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-container p{
+    margin: 15px;
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    font-size: 1rem;
+}
+
+.main-container h1, h2, h3{
+    margin: 30px;
+    font-family: 'Abril Fatface', cursive;
+}
+
+.main-container a{
+    color: #996515;
+}
+
+.main-container a:hover{
+    color: #ffd700;
+}
+
+/*form styles*/
+
+.main-container form{
+    text-align: center;
+    padding: 20px;
+}
+
+.formstyle{
+    margin: 10px;
+    padding: 20px;
+    background-color: white;
+    width: 80%;
+    border-radius: 30px;
+    border: 5px solid #996515;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.formbox{
+    text-align: left;
+    padding: 20px;
+    justify-content: bottom;
+    background-color: white;
+    z-index: 1;
+    margin: 10px;
+}
+
+#email{
+    display: none;
+    background-color: white;
+    text-align: left;
+    padding: 20px;
+}
+
+.formerror{
+    background-color: red;
+    color: white;
+    padding: 20px;
+    list-style-type: none;
+}
+
+
+ .main-container form .submitbtn{
+    background-color:#D2b48c;
+    color: white;
+    font-weight: bold;
+    border-style: none;
+    padding: 5px 10px 5px 10px;
+ }
+
+ .main-container form .submitbtn:hover{
+    background-color: #996515;
+ }
+
+
+/*hero*/
+
+.herocontainer{
+    display: flex;
+    width: 100%;
+    height: 467px;
+    background-image:url('../images/banner.jpeg');
+    background-size: cover;
+    align-items: center;
+}
+
+.bannerbox{
+    background-color:rgb(210, 180, 140, .85);
+    height: 200px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+
+
+.herocontainer .bannerbox{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+/*main-content*/
+.maincontent{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -120px;
+}
+
+/*Featured recipe*/
+.special{
+    max-width: 1200px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.special h2{
+    margin: 0px;
+    text-align: center;
+}
+
+.featured{
+    max-width: 400px;
+    height: auto;
+    background-color: white;
+    text-align: left;
+    margin: 5px;
+    padding: 20px;
+    border: 0px solid #ffd700;
+    border-radius: 20px;
+    transition: width 1s, height 1s, border 1s, box-shadow 1s;
+}
+
+.featured:hover{
+    box-shadow: 0px 10px 8px #888888;
+}
+
+.featured img{
+    max-width: 100%;
+}
+
+.featured h3{
+    text-align: center;
+    margin: 0;
+}
+
+h4{
+    text-align: center;
+    margin: 0;
+    font-style: italic;
+}
+
+.featured p{
+    margin: 5px;
+    padding: 5px;
+}
+
+.special a{
+    text-decoration: none;
+}
+
+.special a:hover{
+    color: #996515;
+}
+
+/*recently added*/
+.recent{
+    max-width: 400px;
+    height: auto;
+    margin: 5px;
+    background-color: white;
+    text-align: left;
+    padding: 20px;
+    border-radius: 20px;
+    
+}
+
+.recent img{
+    width: 75px;
+    height: 75px;
+    float: left;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.reclink{
+    width: 100%;
+    height: 100px;
+    opacity: .75;
+    display: block;
+    transition: opacity 1s;
+    margin-top: 10px;
+}
+
+.reclink:hover{
+    opacity: 1;
+}
+
+/* recipe page */
+.recipetext{
+    width: 80%;
+    border: 5px solid #D2b48c;
+    background-color: rgba(255, 255, 255, .80);
+    border-radius: 15px;
+    clear: left;
+    display: block;
+    margin: 0 auto;
+    text-align: left;
+}
+
+/*footer */
+
+.footer{
+    min-width: 60%;
+    max-width: 1200px;
+    height: 30px;
+    margin: 0 auto;
+    bottom: 0;
+    text-align: right;
+}
+
+.footer p {
+    font-size: .2rem;
+}
+
+/*mobile optimization*/
+
+@media only screen and (max-width: 480px){
+    .herocontainer{
+        max-width: 100%;
+    }
+
+    .main-container{
+        width: 100%;
+        display: flex;
+        padding: 0px;
+    }
+
+
+    .toggle-button{
+        display: flex;
+    }
+
+    .navbar{
+        display: none;
+        width: 100%;
+        height: auto;
+    }
+
+    .navbar{
+        position: absolute;
+        top: 70px;
+        text-align: center;
+    }
+
+    .navbar ul{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .navbar li{
+        text-align: left;
+    }
+
+    .navbar a{
+        padding: .5rem 1rem;
+        width: auto;
+    }
+
+    .navbar.active{
+        display: flex;
+    }
+
+    
+    .navbar ul li:hover .subnav{
+        margin-left: 120px;
+        margin-top: -50px;
+        }
+}
+
+    
+    .special{
+        margin: 0px;
+    }
+
+    .formstyle{
+        margin: 0;
+        padding: 20px;
+        width: 100%;
+    }
+
+    .formstyle table{
+        margin: 0;
+    }
+
+    table.mceLayout, textarea.richEditor {
+        width: 100% !important;
+     }
+
+     .dropdown-menu{
+        transform: translateX(-200%);
+     }
+
+     .dropdown > .link:focus + .dropdown-menu{
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    table.mceLayout, textarea.tinyMCE {
+        width: 50% !important;
+    }
+
+}
+
