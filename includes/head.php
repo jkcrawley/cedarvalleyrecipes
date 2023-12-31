@@ -1,10 +1,6 @@
 <?php
-session_start();
 include 'includes/config.php';
-if(isset($_SESSION['remuser'])){
-setcookie(user, $_SESSION['username'], time() + (86400 * 30), "/");
 
-}
 
 if(isset($_COOKIE['user'])){
     $remsql = "SELECT * FROM users WHERE u_username = '" . $_COOKIE['user'] . "';";
@@ -40,8 +36,8 @@ if(isset($_COOKIE['user'])){
 <body>
 
 
-        <nav class='header'>
-            <div class='logo'><a href='index.php'><img src='images/logo.png' width='100%' height='auto'/></a></div>
+<nav class='header'>
+            <div class='logo'><a href='index.php'><img src='./images/logo.png' width='100%' height='auto'/></a></div>
             <a href='#' class='toggle-button'>
                 <span class='bar'></span>
                 <span class='bar'></span>
@@ -97,23 +93,8 @@ logOut.addEventListener('click', clearStorage);
 ?>
                     </li>
 
-                    <li><a href='#' class='link' data-dropdown-button>BROWSE</a>
-                        <div class='subnav'>
-                            <ul>
-<?php
-//sql for category links
-$bwsql = "SELECT * FROM categories;";
-$bwsres = mysqli_query($conn, $bwsql);
-
-while($bwsrow = mysqli_fetch_array($bwsres, MYSQLI_ASSOC)){
-    echo "<li><a href='http://www.jkcrawley.com/cedarvalleyrecipes/category.php?id=" . $bwsrow['c_id'] . "'>" . $bwsrow['c_name'] . "</a></li>";
-
-}
-?>
-                        </ul>
-                    </div>  
+</div>  
                 </li>
-                    <li><a href='#'>ARTICLES</a></li>
                 </ul>
             </div>
         </nav>

@@ -1,10 +1,7 @@
 <?php
-session_start();
+SESSION_START();
 include '../includes/config.php';
-if(isset($_SESSION['remuser'])){
-setcookie(user, $_SESSION['username'], time() + (86400 * 30), "/");
 
-}
 
 if(isset($_COOKIE['user'])){
     $remsql = "SELECT * FROM users WHERE u_username = '" . $_COOKIE['user'] . "';";
@@ -18,9 +15,10 @@ if(isset($_COOKIE['user'])){
 <!DOCTYPE>
 <head>
     <title>Cedar Valley Recipes</title>
-    <link href='../css/styles.css' rel='stylesheet' />
-    <link rel="../stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
-    <script src='../script.js' defer></script>
+    <link href='css/styles.css' rel='stylesheet' />
+    <link href='css/stylesalt.scss' rel='stylesheet' />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+    <script src='script.js' defer></script>
     <script src="https://use.fontawesome.com/16f9311a42.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -39,7 +37,7 @@ if(isset($_COOKIE['user'])){
 <body>
 
 
-        <nav class='header'>
+<nav class='header'>
             <div class='logo'><a href='../index.php'><img src='../images/logo.png' width='100%' height='auto'/></a></div>
             <a href='#' class='toggle-button'>
                 <span class='bar'></span>
@@ -61,7 +59,7 @@ if(isset($_COOKIE['user']) || isset($_SESSION['username'])){
 ?>
                     <div class='subnav'>
                         <ul>
-                            <li><a href='../users/account.php?id=<?php echo $_SESSION['userid']; ?>''>My Account</a></li>
+                            <li><a href='users/account.php?id=<?php echo $_SESSION['userid']; ?>''>My Account</a></li>
                             <li><a href='../includes/logout.php' id='logout'>Logout</a></li>
                         </ul>
                     </div>
@@ -83,8 +81,8 @@ logOut.addEventListener('click', clearStorage);
 ?>
                     <div class='subnav'>
                         <ul>
-                            <li><a href='../register.php'>Register</a></li>
-                            <li><a href='../login.php'>Login</a></li>
+                            <li><a href='register.php'>Register</a></li>
+                            <li><a href='login.php'>Login</a></li>
                         </ul>
                     </div>
 
@@ -96,27 +94,17 @@ logOut.addEventListener('click', clearStorage);
 ?>
                     </li>
 
-                    <li><a href='#' class='link' data-dropdown-button>BROWSE</a>
-                        <div class='subnav'>
-                            <ul>
-<?php
-//sql for category links
-$bwsql = "SELECT * FROM categories;";
-$bwsres = mysqli_query($conn, $bwsql);
-
-while($bwsrow = mysqli_fetch_array($bwsres, MYSQLI_ASSOC)){
-    echo "<li><a href='http://www.jkcrawley.com/cedarvalleyrecipes/category.php?id=" . $bwsrow['c_id'] . "'>" . $bwsrow['c_name'] . "</a></li>";
-
-}
-?>
-                        </ul>
-                    </div>  
+</div>  
                 </li>
-                    <li><a href='#'>ARTICLES</a></li>
                 </ul>
             </div>
-        </nav>
+        </nav> 
+        
 
+
+
+
+    </div>
     <div class='main-container'>
 <?php
 
@@ -128,6 +116,7 @@ $userrow = mysqli_fetch_array($userres,MYSQLI_ASSOC);
 
 if($userrow['u_level'] == 0){
     $status = 'Member';
+    $tools = '';
 } else if ($userrow['u_level'] == 1){
     $status = 'Chef';
     $tools = "<p><a href='addrecipe.php'>Add a new recipe</a></p>";
@@ -144,6 +133,6 @@ if($userrow['u_level'] == 0){
 <?php
 echo $tools;
 ?>
-</div>
-</body>
-</html>
+<?php
+include '../includes/footer.php';
+?>

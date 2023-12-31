@@ -1,5 +1,4 @@
 <?php
-session_start();
 include 'includes/head.php';
 
 //connect to database
@@ -16,7 +15,11 @@ $username = $_POST['regname'];
 $password = $_POST['regpass'];
 $conpassword = $_POST['regcon'];
 $newsletter = $_POST['newsletter'];
+if(isset($_POST['email'])){
 $email = $_POST['email'];
+} else {
+    $email = 'N/A';
+}
 $lvlrequest = $_POST['lvlrequest'];
 
 //check to see if user already exists
@@ -25,6 +28,11 @@ $lvlrequest = $_POST['lvlrequest'];
     $userrow = mysqli_fetch_array($userresult,MYSQLI_ASSOC);
 
 //validating form
+
+$usererr = '';
+$passerr = '';
+$conerr = '';
+
     if($username == $userrow['u_username'] || empty($username)|| empty($password) || $password != $conpassword){
         if($username == $userrow['u_username']){
             $checkuser = "<li>Username already exists</li>";
@@ -58,6 +66,8 @@ $lvlrequest = $_POST['lvlrequest'];
 <?php
 //display errors
 echo $checkuser;
+
+
 echo $usererr;
 echo $passerr;
 echo $conerr;
@@ -91,7 +101,7 @@ echo $conerr;
             </div>
 
         <div class='formbox'>
-            <label for='lvlrequest'><strong>Would you like to contribute recipes and articles to Cedar Valley Racipes?</strong></label><br />
+            <label for='lvlrequest'><strong>Would you like to contribute recipes and articles to Cedar Valley Recipes?</strong></label><br />
             <input type='radio' name='lvlrequest' id='reqyes' value='yes' /><label for='reqyes'>Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
             <input type='radio' name='lvlrequest' id='reqno' value='no' checked/><label for='reqno'>No</label>
         </div>
@@ -116,17 +126,7 @@ echo $conerr;
         if($conn->query($insertSQL) === TRUE){
             $_SESSION['username'] = $sqluser;
 
-//automatic log in
-            $sqlLog = "SELECT * users WHERE u_username = '" . $sqluser . "';";
-            $logRes = mysqli_query($conn, $sqlLog);
-            $logRow = mysqli_fetch_array($logRes, MYSQLI_ASSOC);
-            $logNum = mysqli_num_rows($logRes);
 
-        if($logNum == 1){
-            $_SESSION['userid'] = $logRow['u_id'];
-            $_SESSION['userlevel'] = $logRow['u_level'];
-            echo "There's a user id of " . $logRow['u_id'];
-        }
 
 
             echo "<h2>Welcome " . $_SESSION['username'] . "!</h2>";

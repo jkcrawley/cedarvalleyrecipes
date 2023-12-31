@@ -1,6 +1,6 @@
 </div>
 <div class='footer'>
-    <p><i>Created by James Crawley | 2021&copy;</i></p>
+    <p><i>Created by James Crawley | &copy;2023</i></p>
 </div>
 </body>
 </html>

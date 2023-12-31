@@ -1,8 +1,8 @@
 <?php
-$servername = "db5005181242.hosting-data.io";
-$username = "dbu18576";
-$password = "3kjG#@1!8sIy";
-$dbname = "dbs4333272";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "cvrecipes";
 
 //Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include"includes/head.php";
+include"../includes/head.php";
 include"../includes/config.php";
 ?>
 <!DOCTYPE html>
@@ -78,23 +78,7 @@ logOut.addEventListener('click', clearStorage);
 ?>
                     </li>
 
-                    <li><a href='#' class='link' data-dropdown-button>BROWSE</a>
-                        <div class='subnav'>
-                            <ul>
-<?php
-//sql for category links
-$bwsql = "SELECT * FROM categories;";
-$bwsres = mysqli_query($conn, $bwsql);
-
-while($bwsrow = mysqli_fetch_array($bwsres, MYSQLI_ASSOC)){
-    echo "<li><a href='http://www.jkcrawley.com/cedarvalleyrecipes/category.php?id=" . $bwsrow['c_id'] . "'>" . $bwsrow['c_name'] . "</a></li>";
-
-}
-?>
-                        </ul>
-                    </div>  
-                </li>
-                    <li><a href='#'>ARTICLES</a></li>
+                    
                 </ul>
             </div>
         </nav>
@@ -177,16 +161,6 @@ while($catRows = mysqli_fetch_array($catResult)){
                 <input type='submit' class='submitbtn' name='submit' />
             </td>
         </tr>
-  <script>
-    tinymce.init({
-      selector: '#recipe',
-      plugins: 'a11ychecker advcode casechange export formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
-      toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter pageembed permanentpen table',
-      toolbar_mode: 'floating',
-      tinycomments_mode: 'embedded',
-      tinycomments_author: 'Author name',
-   });
-  </script>
   </table>
 
 </form>
@@ -260,7 +234,7 @@ while($catRows = mysqli_fetch_array($catResult)){
 ?>
 <option value='<?php echo $catRows['c_id']; ?>'> <?php echo $catName; ?> </option>
 <?php
-    $i++;
+    
 }
 
 ?>
@@ -290,18 +264,16 @@ while($catRows = mysqli_fetch_array($catResult)){
                 <input type='submit' class='submitbtn' name='submit' />
             </td>
         </tr>
-  <script>
-    tinymce.init({
-      selector: '#recipe',
-      plugins: 'a11ychecker advcode casechange export formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
-      toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter pageembed permanentpen table',
-      toolbar_mode: 'floating',
-      tinycomments_mode: 'embedded',
-      tinycomments_author: 'Author name',
-   });
-  </script>
+  
   </table>
-
+  <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
+  <script>
+    ClassicEditor
+        .create( document.querySelector( '#recipe' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 </form>
 </div>
 <?php
