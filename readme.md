@@ -1,9 +1,12 @@
-Uploaded site to github
-
-v1.1
-Fixed Login issues
+<h1>v1.1</h1>
+<p>
+Fixed Login issues<br />
 Recreated sql Database.
+</p>
 
+<p>
 Issues that still exist:
-  
-  - Had to temporarily remove cookies due to browser issues. "Remember Me" checkbox currently does not work.
+  <ul>
+  <li>Had to temporarily remove cookies due to browser issues.</li>
+  <li>"Remember Me" checkbox currently does not work.</li>
+  </ul>
