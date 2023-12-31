@@ -1,6 +1,5 @@
 <?php
 session_start();
-include"../includes/head.php";
 include"../includes/config.php";
 ?>
 <!DOCTYPE html>
@@ -88,7 +87,8 @@ logOut.addEventListener('click', clearStorage);
 
 <div class='main-container'>
 <?php
-
+//create empty variable for image error
+$imgerror = "";
 //check if form was submitted
 if(isset($_POST['submit'])){
 //check for errors
