@@ -87,32 +87,51 @@ logOut.addEventListener('click', clearStorage);
 
 <div class='main-container'>
 <?php
-//create empty variable for image error
-$imgerror = "";
+//create global error variables
+$titleErr = "";
+$descErr = "";
+$recErr = "";
+$imgErr = "";
+
+//create criteria for file type for image upload
+$extensions = array('jpg', 'jpeg', 'png', 'gif');
+
+//extract file type from chosen file name
+$file_ext = explode('.', $_FILES['imgUpload']['name']);
+$file_ext = end($file_ext);
+
+
+
 //check if form was submitted
 if(isset($_POST['submit'])){
+
 //check for errors
-    if(empty($_POST['rectitle']) || empty($_POST['recdesc']) || empty($_POST['recipe']))
+    if(empty($_POST['rectitle']) || empty($_POST['recdesc']) || empty($_POST['recipe']) || $_FILES['imgUpload']['name'] == '' || !in_array($file_ext, $extensions))
         {
             if(empty($_POST['rectitle'])){ 
-                $titleErr = '<li>You must enter a title</li>';
+                $titleErr = '<li><b>X</b> You must enter a title</li>';
             }
             if(empty($_POST['recdesc'])){ 
-                $descErr = '<li>You must enter a description</li>';
+                $descErr = '<li><b>X</b> You must enter a description</li>';
             }
             if(empty($_POST['recipe'])){ 
-                $recErr = '<li>You must enter a recipe</li>';
+                $recErr = '<li><b>X</b> You must enter a recipe</li>';
+            }
+            if($_FILES['imgUpload']['name'] == '' || !in_array($file_ext, $extensions)){
+                $imgErr = '<li><b>X</b> Image is either missing or improper format</li>';
             }
 //form after submissions with errors
 ?>
+
+<form action='addrecipe.php' class='formstyle' name='addrecipe' method='post' enctype='multipart/form-data'>
 <ul style='background-color: red; color: white;'>
 <?php
 echo $titleErr;
 echo $descErr;
 echo $recErr;
+echo $imgErr;
 ?>
 </ul>
-<form action='addrecipe.php' class='formstyle' name='addrecipe' method='post' enctype='multipart/form-data'>
     <table>
     <caption><h2>Add New Recipe</h2></caption>
         <tr>
@@ -133,7 +152,6 @@ while($catRows = mysqli_fetch_array($catResult)){
 ?>
 <option value='<?php echo $catRows['c_id']; ?>''> <?php echo $catName; ?> </option>
 <?php
-    $i++;
 }
 
 ?>
@@ -150,10 +168,10 @@ while($catRows = mysqli_fetch_array($catResult)){
         </tr>
         <tr>
             <td valign='top' align='left'><strong>Brief Description:<strong></td>
-            <td align='left'><textarea name='recdesc' width='30%'></textarea>
+            <td align='left'><textarea name='recdesc'' rows='5'></textarea>
         </tr>
         <tr><td valign='top' colspan='2' align='left'><strong>Recipe:</strong><br />
-  <textarea name='recipe' id='recipe' style='width:50%;'> 
+  <textarea name='recipe' id='recipe' > 
   </textarea>
 </td></tr>
 <tr>
@@ -184,33 +202,17 @@ while($catRows = mysqli_fetch_array($catResult)){
      echo "Error: " . $recipeInsert . "<br />" . $conn->error;
  }
 
-//uploading image
 
-//create criteria for file type
-        $extensions = array('jpg', 'jpeg', 'png', 'gif');
 
-//extract file type from chosen file name
-        $file_ext = explode('.', $_FILES['imgUpload']['name']);
-        $file_ext = end($file_ext);
+ move_uploaded_file($_FILES['imgUpload']['tmp_name'], 'userimages/' . $_FILES['imgUpload']['name']);
+ $ext_error = false;
 
-//generate error if file extension doesn't match extension criteria
-        if(!in_array($file_ext, $extensions)){
-            $imgerror = 'Images must be either .jpg, .gif, .png, or .jpeg';
-        } else{
 
-//uploaded image if extension meets criteria
-            if(isset($_FILES['imgUpload'])){
-            move_uploaded_file($_FILES['imgUpload']['tmp_name'], 'userimages/' . $_FILES['imgUpload']['name']);
-                $ext_error = false;
-            }
-        }
-    //upload recipe to mysql
 
 
 
     } 
 } else {
-echo $imgerror;
 ?>
 
 <form action='addrecipe.php' class='formstyle' name='addrecipe' method='post' enctype='multipart/form-data'>
@@ -266,7 +268,13 @@ while($catRows = mysqli_fetch_array($catResult)){
         </tr>
   
   </table>
-  <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
+  
+</form>
+</div>
+<?php
+}
+?>
+<script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
   <script>
     ClassicEditor
         .create( document.querySelector( '#recipe' ) )
@@ -274,11 +282,6 @@ while($catRows = mysqli_fetch_array($catResult)){
             console.error( error );
         } );
 </script>
-</form>
-</div>
-<?php
-}
-?>
 </body>
 
 </html>
