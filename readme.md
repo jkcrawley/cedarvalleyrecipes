@@ -1,5 +1,11 @@
 # v1.2
 
+
+## General
+
+Known issues:
+* Cookies are still not active
+
 ## users/addrecipe.php
 
 Resolved:
@@ -12,8 +18,17 @@ Known Issues:
  
  * Image file doesn't properly check for file uploaded.
  * Drop down category menu breaks with an undefined variable: "i" on line 136
+
+ ## login.php
+
+Known issues:
+
+* "Remember me" checkbox doesn't work due to cookies being inactive.
   
+------------------------------------------------------------------------------------------------
+
 # v1.1
+
 
 Resolved:
 
