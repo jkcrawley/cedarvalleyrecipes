@@ -1,30 +1,27 @@
-<h1>v1.2</h1>
+# v1.2
 
-<b><u>users/addrecipe.php</u></b>
-<p>
+## users/addrecipe.php
+
 Resolved:
-  <ul>
-    <li>Fixed php head and sessions errors</li>
-    <li>Created empty global variable for imgerror</li>
-  </ul>
-</p>
-<p>
+
+* Fixed php head and sessions errors
+* *Created empty global variable for imgerror</li>
+ 
+
 Known Issues:
-  <ul>
-    <li>Image file doesn't properly check for file uploaded.</li>
-    <li>Drop down category menu breaks with an undefined variable: "i" on line 136
-  </ul>
-</p>
+ 
+ * Image file doesn't properly check for file uploaded.
+ * Drop down category menu breaks with an undefined variable: "i" on line 136
+  
+# v1.1
 
-<h1>v1.1</h1>
-<p>
-Fixed Login issues<br />
-Recreated sql Database.
-</p>
+Resolved:
 
-<p>
-Issues that still exist:
-  <ul>
-  <li>Had to temporarily remove cookies due to browser issues.</li>
-  <li>"Remember Me" checkbox currently does not work.</li>
-  </ul>
+* Fixed Login issues
+* Recreated sql Database.
+
+
+Known issues:
+  
+* Had to temporarily remove cookies due to browser issues.
+* Remember Me" checkbox currently does not work.
