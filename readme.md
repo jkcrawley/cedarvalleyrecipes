@@ -1,3 +1,13 @@
+# v1.3
+
+## users/addrecipe.php
+
+Resolved:
+* File upload now properly validates for file type and existance.
+* Fixed drop down menu category loop
+
+--------------------------------------------------------------------------------------------------------------------------------
+
 # v1.2
 
 
