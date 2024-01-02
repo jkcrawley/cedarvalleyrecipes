@@ -2,13 +2,6 @@
 include 'includes/config.php';
 
 
-if(isset($_COOKIE['user'])){
-    $remsql = "SELECT * FROM users WHERE u_username = '" . $_COOKIE['user'] . "';";
-    $remres = mysqli_query($conn, $remsql);
-    $remrow = mysqli_fetch_array($remres, MYSQLI_ASSOC); 
-    $_SESSION['userid'] = $remrow['u_id'];
-    $_SESSION['userlevel'] = $remrow['u_level'];
-}
 ?>
 
 <!DOCTYPE>

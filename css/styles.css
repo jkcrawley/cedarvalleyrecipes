@@ -234,6 +234,7 @@ h4{
 
 
 
+
 .formbox{
     text-align: left;
     padding: 20px;
@@ -485,13 +486,13 @@ h4{
     }
 
     .formstyle{
-        margin: 0;
+        margin: 20px;
         padding: 20px;
-        width: 100%;
     }
 
-    .formstyle table{
-        margin: 0;
+  
+    .formtable{
+        margin: 0 auto;
     }
 
     table.mceLayout, textarea.richEditor {

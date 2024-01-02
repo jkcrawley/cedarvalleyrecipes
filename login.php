@@ -53,26 +53,14 @@ if(isset($_POST['subbtn'])){
             $userLevel = $row['u_level'];
             $userId = $row['u_id'];
 
-            if(isset($_POST['remlogin'])){
-                $_SESSION['remuser'] = $remember;
-                $_SESSION['userlevel'] = $row['u_level'];
-                $_SESSION['userid'] = $row['u_id'];
-            }
+            
 
 ?>
 
 <?php
 echo "<input type='hidden' id='jsUser' value='" . $userName . "' />";
 ?>
-<script>
-let userName = document.getElementById('jsUser').value;
 
-
-localStorage.setItem('username', userName);
-
-var jsUser = localStorage.getItem('username');
-
-</script>
 <?php
 
 
@@ -102,22 +90,21 @@ var jsUser = localStorage.getItem('username');
 ?>
 
 <form name='login' method='post' class='formstyle' action="<?php $_SERVER['PHP_SELF'] ?>">
+<div class='formtable'>
 <table>
     <tr>
         <td><strong>Username:</strong></td>
         <td><input type='text' name='namelog' id='namelog' /></td>
     </tr>
-    <tr>
+    <tr> 
         <td><strong>Password:<strong></td>
         <td><input type='password' name='passlog' id='passlog'/></td>
-    </tr>
-    <tr>
-        <td colspan='2'><p><label for='remember'>Remember Login?</label>&nbsp;&nbsp;&nbsp;&nbsp;<input name='remlogin' type='checkbox' value='checked' /></p></td>
     </tr>
     <tr>
         <td colspan='2'><input type='submit' name='subbtn' class='submitbtn' value='Login' /></td>
     </tr>
 </table>
+</div>
 
 </form>
 

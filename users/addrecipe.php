@@ -87,6 +87,13 @@ logOut.addEventListener('click', clearStorage);
 
 <div class='main-container'>
 <?php
+
+
+
+
+//check if form was submitted
+if(isset($_POST['submit'])){
+
 //create global error variables
 $titleErr = "";
 $descErr = "";
@@ -99,11 +106,6 @@ $extensions = array('jpg', 'jpeg', 'png', 'gif');
 //extract file type from chosen file name
 $file_ext = explode('.', $_FILES['imgUpload']['name']);
 $file_ext = end($file_ext);
-
-
-
-//check if form was submitted
-if(isset($_POST['submit'])){
 
 //check for errors
     if(empty($_POST['rectitle']) || empty($_POST['recdesc']) || empty($_POST['recipe']) || $_FILES['imgUpload']['name'] == '' || !in_array($file_ext, $extensions))
@@ -132,6 +134,7 @@ echo $recErr;
 echo $imgErr;
 ?>
 </ul>
+<div class="formtable">
     <table>
     <caption><h2>Add New Recipe</h2></caption>
         <tr>
@@ -180,7 +183,7 @@ while($catRows = mysqli_fetch_array($catResult)){
             </td>
         </tr>
   </table>
-
+</div>
 </form>
 </div>
 <?php
@@ -216,6 +219,7 @@ while($catRows = mysqli_fetch_array($catResult)){
 ?>
 
 <form action='addrecipe.php' class='formstyle' name='addrecipe' method='post' enctype='multipart/form-data'>
+    <div class='formtable'>
     <table>
         <h2>Add New Recipe</h2>
         <tr>
@@ -268,7 +272,7 @@ while($catRows = mysqli_fetch_array($catResult)){
         </tr>
   
   </table>
-  
+    </div>
 </form>
 </div>
 <?php
